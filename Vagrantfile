@@ -16,6 +16,7 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--draganddrop", "bidirectional"]
   end
   #config.vm.provision "shell", path: "chocolatey-0.9.9.12.ps1", name: "Install Chocolatey"
-  config.vm.provision "shell", path: "chocolatey-0.9.10.3.ps1", name: "Install Chocolatey"
+  #config.vm.provision "shell", path: "chocolatey-0.9.10.3.ps1", name: "Install Chocolatey"
+  config.vm.provision "shell", inline: "$env:chocolateyVersion='0.10.0'; &c:/vagrant/chocolatey-0.10.0.ps1", name: "Install Chocolatey"
   config.vm.provision "shell", inline: "choco install -y notepad2", name: "Install Notepad2"
 end
